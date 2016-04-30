@@ -10,7 +10,7 @@ BEGIN {
 
     if ($0 ~ /\?xml/ ) should_print=1;
 
-    gsub(/^[ \t]+/, “”, $0) 
+    gsub(/^[ \t]+/, "", $0) 
 
     if ($0 ~ /<\/testsuites>/ ) { 
 
