@@ -1,9 +1,9 @@
 require 'serverspec'
-require ‘yarjuf’
+require 'yarjuf'
 
 RSpec.configure do |c|
 
-    c.formatter = ‘JUnit’
+    c.formatter = 'JUnit'
 
 end
 
