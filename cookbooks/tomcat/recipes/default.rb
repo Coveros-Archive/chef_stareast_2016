@@ -13,11 +13,15 @@ end
 
 template "/etc/tomcat/server.xml" do
   source "server.xml.erb"
+  user 'tomcat'
+  group 'tomcat'
   action :create
 end
 
 template "/usr/share/tomcat/conf/server.xml" do
   source "server.xml.erb"
+  user 'tomcat'
+  group 'tomcat'
   action :create
 end
 

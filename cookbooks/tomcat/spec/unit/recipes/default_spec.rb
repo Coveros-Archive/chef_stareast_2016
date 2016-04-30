@@ -14,16 +14,15 @@ describe 'tomcat::default' do
     end
 
     it 'installs tomcat' do
-      expect { chef_run }.to install_package('tomcat')
+      expect(chef_run).to install_package('tomcat')
     end
     it 'creates server.xml in conf' do
-      expect(chef_run).to create_file('/usr/share/tomcat/conf/server.xml').with(
-        user:   'tomcat',
+      expect(chef_run).to create_template('/usr/share/tomcat/conf/server.xml').with(user:   'tomcat',
         group:  'tomcat'
         )
     end 
     it 'creates server.xml in etc' do
-      expect(chef_run).to create_file('/etc/tomcat/server.xml').with(
+      expect(chef_run).to create_template('/etc/tomcat/server.xml').with(
         user:   'tomcat',
         group:  'tomcat'
         )
