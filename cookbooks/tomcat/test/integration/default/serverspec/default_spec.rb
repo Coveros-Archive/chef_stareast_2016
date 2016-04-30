@@ -1,29 +1,17 @@
 require 'spec_helper'
 
+# Required by serverspec
+set :backend, :exec
+
 describe 'tomcat::default' do
   # Serverspec examples can be found at
   # http://serverspec.org/resource_types.html
-  it 'installs tomcat' do
-    expect { chef_run }.to install_package('tomcat')
+  it 'starts tomcat' do
+    expect(service("tomcat")).to be_running
   end
-  it 'creates server.xml in conf' do
-    expect(chef_run).to create_file('/usr/share/tomcat/conf/server.xml').with(
-      user:   'tomcat',
-      group:  'tomcat'
-      )
-  end 
-  it 'creates server.xml in etc' do
-    expect(chef_run).to create_file('/etc/tomcat/server.xml').with(
-      user:   'tomcat',
-      group:  'tomcat'
-      )
-  end 
-  
-  it 'enables a service tomcat action' do
-    expect(chef_run).to enable_service('tomcat')
+
+  it "is listening on port 8080" do
+    expect(port(8080)).to be_listening
   end
   
-  it 'starts a service tomcat action' do
-    expect(chef_run).to start_service('tomcat')
-  end
 end

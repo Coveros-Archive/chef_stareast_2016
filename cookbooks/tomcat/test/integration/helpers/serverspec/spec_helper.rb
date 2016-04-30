@@ -1,5 +1,3 @@
-require 'chefspec'
-require 'chefspec/berkshelf'
 require 'serverspec'
 
 if (/cygwin|mswin|mingw|bccwin|wince|emx/ =~ RUBY_PLATFORM).nil?
